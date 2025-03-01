@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Mail, Linkedin, Phone, FileText } from "lucide-react"
+import { Mail, Linkedin, Phone, FileText, Github } from "lucide-react"
 import { AnimatedGradient } from "./ui/animated-gradient"
 import Link from "next/link"
 
@@ -13,9 +13,10 @@ const Contact = () => {
   })
 
   const contactInfo = [
-    { icon: Mail, text: "arnavj19@outlook.com", href: "mailto:arnavj19@outlook.com" },
-    { icon: Linkedin, text: "LinkedIn", href: "https://www.linkedin.com/in/arnavj19" },
-    { icon: Phone, text: "857-498-1596", href: "tel:+18574981596" },
+    { icon: Mail, text: "kandarp.canada@gmail.com", href: "mailto:kandarp.canada@gmail.com" },
+    { icon: Linkedin, text: "LinkedIn", href: "https://www.linkedin.com/in/kandarp-patel" },
+    { icon: Github, text: "GitHub", href: "https://github.com/kandarp-patel" },
+    { icon: Phone, text: "+1 (902) 448-7485", href: "tel:+19024487485" },
   ]
 
   return (

@@ -2,121 +2,32 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import Image from "next/image"
 import { AnimatedGradient } from "./ui/animated-gradient"
 
 const skillGroups = [
   {
-    category: "Data Visualization",
-    skills: [
-      { name: "Tableau", icon: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg" },
-      { name: "Matplotlib", icon: "https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" },
-      { name: "Seaborn", icon: "https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" },
-      { name: "ggplot", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/r/r-original.svg" },
-    ],
-  },
-  {
-    category: "Data Analytics & Business Intelligence",
-    skills: [
-      {
-        name: "Excel",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg",
-      },
-      { name: "SPSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spss/spss-original.svg" },
-      { name: "Power BI", icon: "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" },
-      { name: "Tableau", icon: "https://cdn.worldvectorlogo.com/logos/tableau-software.svg" },
-      { name: "Streamlit", icon: "https://streamlit.io/images/brand/streamlit-mark-color.svg" },
-    ],
-  },
-  {
-    category: "Machine Learning & Deep Learning",
-    skills: [
-      { name: "scikit-learn", icon: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" },
-      {
-        name: "TensorFlow",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg",
-      },
-      {
-        name: "PyTorch",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg",
-      },
-      {
-        name: "Pandas",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg",
-      },
-      {
-        name: "NumPy",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg",
-      },
-      {
-        name: "Gymnasium",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
-      },
-    ],
-  },
-  {
-    category: "Big Data & Cloud Computing",
-    skills: [
-      {
-        name: "Microsoft Azure",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg",
-      },
-      {
-        name: "Apache Spark",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/apache/apache-original.svg",
-      },
-      {
-        name: "Hadoop",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/hadoop/hadoop-original.svg",
-      },
-      {
-        name: "Kafka",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/apachekafka/apachekafka-original.svg",
-      },
-      {
-        name: "MongoDB",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg",
-      },
-    ],
-  },
-  {
-    category: "Database Management",
-    skills: [
-      {
-        name: "PostgreSQL",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg",
-      },
-      { name: "SQL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" },
-    ],
-  },
-  {
-    category: "Software Development & Version Control",
-    skills: [
-      { name: "Git", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" },
-      {
-        name: "GitHub",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg",
-      },
-    ],
-  },
-  {
     category: "Programming Languages",
-    skills: [
-      {
-        name: "Python",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
-      },
-      { name: "R", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/r/r-original.svg" },
-      {
-        name: "Scala",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/scala/scala-original.svg",
-      },
-      { name: "Java", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" },
-      {
-        name: "C/C++",
-        icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg",
-      },
-    ],
+    skills: ["C#", "JavaScript", "TypeScript", "Python", "SQL"],
+  },
+  {
+    category: "Frameworks & Libraries",
+    skills: [".NET Core", ".NET Framework", "Entity Framework", "Angular", "React.js", "Node.js"],
+  },
+  {
+    category: "Databases",
+    skills: ["Microsoft SQL Server", "MySQL", "PostgreSQL", "MongoDB"],
+  },
+  {
+    category: "Cloud & DevOps",
+    skills: ["AWS", "Docker", "Kubernetes", "Terraform", "Jenkins", "CI/CD Pipelines"],
+  },
+  {
+    category: "Development Tools",
+    skills: ["Git", "GitHub", "Visual Studio", "Jira", "Confluence", "Postman", "Swagger", "Figma"],
+  },
+  {
+    category: "APIs & Integrations",
+    skills: ["REST APIs", "GraphQL", "OData APIs", "RabbitMQ", "MassTransit"],
   },
 ]
 
@@ -151,28 +62,15 @@ const Skills = () => {
             transition={{ duration: 0.5, delay: groupIndex * 0.1 }}
           >
             <h3 className="text-xl font-semibold mb-6 text-blue-400">{group.category}</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {group.skills.map((skill, index) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {group.skills.map((skill) => (
                 <motion.div
-                  key={skill.name}
-                  className="flex flex-col items-center justify-center p-4 bg-[#1A1A1A] rounded-lg transition-colors"
+                  key={skill}
+                  className="flex items-center justify-center p-4 bg-[#1A1A1A] rounded-lg transition-colors"
                   whileHover={{ scale: 1.05, backgroundColor: "#252525" }}
                   transition={{ duration: 0.3 }}
                 >
-                  <motion.div
-                    className="w-12 h-12 mb-3 relative"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <Image
-                      src={skill.icon || "/placeholder.svg"}
-                      alt={skill.name}
-                      width={48}
-                      height={48}
-                      className="w-full h-full object-contain filter brightness-100 hover:brightness-110 transition-all"
-                    />
-                  </motion.div>
-                  <span className="text-sm text-gray-300 text-center">{skill.name}</span>
+                  <span className="text-sm text-gray-300 text-center">{skill}</span>
                 </motion.div>
               ))}
             </div>

@@ -1,16 +1,14 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { AnimatedGradient } from "./ui/animated-gradient";
-import { Spotlight } from "./ui/spotlight";
+import { motion } from "framer-motion"
+import { Spotlight } from "./ui/spotlight"
 
 const Hero = () => {
   return (
     <Spotlight className="min-h-screen flex items-center justify-center bg-[#0A0A0A] overflow-hidden">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
+      <div className="container mx-auto px-6">
         <motion.div
-          className="md:w-1/2 text-center md:text-left"
+          className="text-center md:text-left max-w-3xl mx-auto"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
@@ -28,10 +26,8 @@ const Hero = () => {
             />
           </h2>
           <p className="text-gray-400 mb-8">
-            Master's student in Applied Data Analytics at Boston University,
-            with a background in Computer Science and Communication Engineering.
-            Passionate about leveraging data to drive insights and solve complex
-            problems.
+            Software Developer with 3 years of experience, currently pursuing a Master of Applied Computer Science at
+            Dalhousie University. Passionate about building scalable applications and solving complex problems.
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -45,39 +41,15 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
-              <span className="relative text-white font-semibold">
-                Get in Touch
-              </span>
+              <span className="relative text-white font-semibold">Get in Touch</span>
               <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[length:200%_100%] animate-gradient-x" />
             </motion.a>
           </motion.div>
         </motion.div>
-        <motion.div
-          className="md:w-1/2 mt-12 md:mt-0 relative"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            duration: 0.5,
-            ease: [0.6, -0.05, 0.01, 0.99],
-          }}
-        >
-          <div className="relative w-full h-0 pb-[100%] md:pb-[75%]">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 rounded-2xl blur opacity-30 animate-pulse" />
-            <div className="absolute inset-0">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_4855.jpg-hWpEVVo51gnwazECKM29WZ8CnR6v44.jpeg"
-                alt="Kandarp Patel"
-                layout="fill"
-                objectFit="cover"
-                className="rounded-2xl shadow-2xl transform hover:scale-[1.02] transition-transform duration-300"
-                priority
-              />
-            </div>
-          </div>
-        </motion.div>
       </div>
     </Spotlight>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
+

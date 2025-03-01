@@ -31,9 +31,9 @@ const About = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           {[
-            "I'm a graduate student pursuing a Master of Science in Applied Data Analytics at Boston University, with a strong foundation in Computer Science and Communication Engineering from Manipal University Jaipur. My academic journey has equipped me with a robust skill set in statistical analysis, machine learning, and data visualization.",
-            "With experience as a Proprietary Trader at Jain Capital, I've honed my skills in financial analysis and high-frequency trading. I'm passionate about leveraging data to drive insights and solve complex problems across various domains, including finance, technology, and healthcare.",
-            "I'm constantly exploring new techniques and tools in data science and machine learning, aiming to stay at the forefront of this rapidly evolving field. I'm excited about the potential of data analytics to make a positive impact and drive informed decision-making in businesses and organizations.",
+            "I'm a Software Developer with 3 years of professional experience, currently pursuing a Master of Applied Computer Science at Dalhousie University in Halifax, Nova Scotia, Canada.",
+            "Throughout my career at Maruti Techlabs, I've engineered and deployed enterprise applications using .NET Core, C#, and Microsoft SQL Server, while also developing front-end solutions with Angular and React.",
+            "I'm passionate about building scalable, efficient applications and solving complex problems. My experience spans from optimizing database performance to implementing CI/CD pipelines and developing microservices architectures.",
           ].map((paragraph, index) => (
             <motion.p
               key={index}
