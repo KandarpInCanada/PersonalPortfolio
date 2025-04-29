@@ -1,53 +1,63 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { AnimatedGradient } from "./ui/animated-gradient"
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { AnimatedGradient } from "./ui/animated-gradient";
 
 const experiences = [
   {
     title: "Software Developer",
     company: "Maruti Techlabs",
     location: "Ahmedabad, India",
-    period: "June 2023 – August 2024",
+    period: "July 2023 – July 2024",
     description: [
-      "Engineered and deployed enterprise applications leveraging .NET Core, C#, and Microsoft SQL Server, optimizing system performance and scalability.",
-      "Architected and fine-tuned RESTful APIs and OData APIs using ASP.NET Core and Entity Framework, accelerating data transactions by 40%.",
-      "Enhanced database efficiency by 50% through meticulous query tuning, indexing strategies, and SQL Server performance profiling.",
-      "Spearheaded the development of a modular Angular front-end, elevating user interactivity and reducing load times by 30%.",
-      "Automated software release cycles by integrating CI/CD pipelines, diminishing deployment failures by 60%.",
-      "Championed peer code reviews and collaborated within Agile sprints, strengthening code maintainability and boosting team output by 25%.",
-      "Devised a Salesforce-Airtable integration, enhancing data synchronisation accuracy by 50% and minimising inconsistencies.",
-      "Developed a RabbitMQ monitoring tool, fortifying queue reliability and reducing message processing lags by 80%.",
-      "Orchestrated a Gmail push notification system via Pub/Sub and Gmail APIs, expediting email handling efficiency by 40%.",
-      "Innovated API client automation with Stoplight and Source Code Generator, slashing manual API maintenance by 30%.",
+      "Conducted peer code reviews across 10+ Agile sprints, enforcing SOLID principles and TDD, reducing production bugs by 35%",
+      "Optimized REST/OData API performance by 40% using .NET and Entity Framework in high-throughput systems",
+      "Orchestrated IaC with Terraform and AWS EKS, achieving 50% faster deployments and 90% SLA adherence",
+      "Engineered fault-tolerant payment system using MassTransit state machines and RabbitMQ, reducing payment failures by 40%",
+      "Presented sprint outcomes with release notes and architecture diagrams to stakeholders",
+      "Developed Terraform module documentation and deployment playbooks for DevOps teams",
     ],
     tools:
-      ".NET Core, C#, Microsoft SQL Server, ASP.NET Core, Entity Framework, Angular, CI/CD, Agile, Salesforce, RabbitMQ, Gmail APIs",
+      ".NET, C#, Terraform, AWS EKS, Kubernetes, RabbitMQ, MassTransit, Entity Framework, New Relic, PCI-DSS",
   },
   {
     title: "Associate Software Developer",
     company: "Maruti Techlabs",
     location: "Ahmedabad, India",
-    period: "August 2021 - May 2023",
+    period: "July 2022 - May 2023",
     description: [
-      "Formulated a .NET Core synchronization service with Salesforce integration, reinforcing data integrity and reducing sync failures by 99.9%.",
-      "Revamped legacy C# applications by transitioning to .NET Core, amplifying maintainability and curtailing memory footprint by 40%.",
-      "Optimized API interactions using GraphQL and REST, compressing response latency by 50% while improving data exchange speed.",
-      "Developed scalable React UI components and a Next.js analytics dashboard, expediting front-end performance by 50%.",
-      "Automated business-critical data pipelines with Apache Airflow, streamlining workflow execution and cutting manual intervention by 60%.",
-      "Constructed an OpenSearch-to-S3 pipeline utilizing multipart uploads, amplifying data processing throughput by 70%.",
-      "Pioneered proof-of-concept (PoC) initiatives in cloud automation and event-driven architectures, influencing firm-wide technology adoption.",
+      "Architected fault-tolerant microservice using RabbitMQ/.NET to sync 10+ services with Salesforce (99.9% data consistency)",
+      "Automated Apache Airflow schedulers for mission-critical workflows including RabbitMQ monitoring system",
+      "Designed Airflow DAGs triggering Slack/email alerts for >10K pending messages, reducing processing lag by 80%",
+      "Built Elasticsearch-to-S3 data pipeline achieving 70% faster upload throughput with Python/boto3",
+      "Pioneered Gmail push notification POC using Google Pub/Sub/Gmail API, cutting cloud costs by 70%",
+      "Developed OpenAPI-based C# source code generator reducing SDK development efforts by 30%",
     ],
-    tools: ".NET Core, C#, Salesforce, GraphQL, REST, React, Next.js, Apache Airflow, OpenSearch, AWS S3",
+    tools:
+      ".NET, RabbitMQ, Apache Airflow, Python, AWS S3, Elasticsearch, Google Pub/Sub, OpenAPI, Salesforce",
   },
-]
+  {
+    title: "Software Developer Intern",
+    company: "Maruti Techlabs",
+    location: "Ahmedabad, India",
+    period: "December 2021 - May 2022",
+    description: [
+      "Modernized legacy microservices to latest .NET with Docker/Kubernetes, reducing security vulnerabilities by 60%",
+      "Improved API response times by 25% through containerization and orchestration",
+      "Participated in Agile Scrum ceremonies, improving sprint completion rates by 20%",
+      "Implemented CI/CD pipelines for microservices deployment",
+      "Conducted performance profiling and optimization of SQL Server databases",
+    ],
+    tools: ".NET, Docker, Kubernetes, SQL Server, Azure DevOps, Git, Postman",
+  },
+];
 
 const Experience = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   return (
     <section id="experience" className="py-20 bg-[#0A0A0A]">
@@ -60,62 +70,73 @@ const Experience = () => {
           ref={ref}
         >
           <AnimatedGradient className="inline-block">
-            <h2 className="text-3xl md:text-4xl font-bold text-white px-4 py-2">Work Experience</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white px-4 py-2">
+              Professional Experience
+            </h2>
           </AnimatedGradient>
         </motion.div>
-        <div className="max-w-4xl mx-auto">
+
+        <div className="mx-auto space-y-8">
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.title}
-              className="mb-8 bg-[#111111] rounded-lg p-6 shadow-lg"
+              className="group bg-[#111111] rounded-xl p-6 border border-transparent hover:border-blue-900 transition-all"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.01 }}
             >
-              <motion.h3
-                className="text-xl font-semibold text-blue-400 mb-4"
-                whileHover={{ color: "#60A5FA" }}
-                transition={{ duration: 0.3 }}
-              >
-                {exp.title}
-              </motion.h3>
-              <motion.p className="text-gray-300 mb-1" whileHover={{ color: "#9CA3AF" }} transition={{ duration: 0.3 }}>
-                {exp.company}
-              </motion.p>
-              <motion.p
-                className="text-sm text-gray-400 mb-4"
-                whileHover={{ color: "#D1D5DB" }}
-                transition={{ duration: 0.3 }}
-              >
-                {exp.location} | {exp.period}
-              </motion.p>
-              <ul className="list-disc pl-5 text-gray-300 mb-4">
+              <div className="flex flex-col md:flex-row justify-between mb-4">
+                <motion.h3
+                  className="text-xl font-semibold text-blue-400 mb-2"
+                  whileHover={{ color: "#60A5FA" }}
+                >
+                  {exp.title}
+                </motion.h3>
+                <motion.span
+                  className="text-sm text-gray-400"
+                  whileHover={{ color: "#D1D5DB" }}
+                >
+                  {exp.period}
+                </motion.span>
+              </div>
+
+              <motion.div className="mb-4">
+                <p className="text-gray-300 font-medium">{exp.company}</p>
+                <p className="text-sm text-gray-400">{exp.location}</p>
+              </motion.div>
+
+              <ul className="space-y-3 mb-6">
                 {exp.description.map((item, i) => (
                   <motion.li
                     key={i}
-                    className="mb-2"
-                    whileHover={{ color: "#60A5FA", x: 5 }}
-                    transition={{ duration: 0.3 }}
+                    className="text-gray-300 pl-4 border-l-2 border-blue-800 hover:border-blue-400 transition-colors"
+                    whileHover={{ x: 5 }}
                   >
                     {item}
                   </motion.li>
                 ))}
               </ul>
-              <motion.p
-                className="text-sm text-gray-400"
-                whileHover={{ color: "#9CA3AF" }}
-                transition={{ duration: 0.3 }}
+
+              <motion.div
+                className="flex flex-wrap gap-2"
+                whileHover={{ opacity: 1 }}
               >
-                Tools: {exp.tools}
-              </motion.p>
+                {exp.tools.split(", ").map((tool, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 text-xs bg-[#252525] text-gray-300 rounded-full"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </motion.div>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Experience
-
+export default Experience;

@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { AnimatedGradient } from "./ui/animated-gradient"
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { AnimatedGradient } from "./ui/animated-gradient";
 
 const About = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   return (
     <section id="about" className="py-20 bg-[#0A0A0A]">
@@ -21,34 +21,38 @@ const About = () => {
           ref={ref}
         >
           <AnimatedGradient className="inline-block">
-            <h2 className="text-3xl md:text-4xl font-bold text-white px-4 py-2">About Me</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white px-4 py-2">
+              About Me
+            </h2>
           </AnimatedGradient>
         </motion.div>
         <motion.div
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          {[
-            "I'm a Software Developer with 3 years of professional experience, currently pursuing a Master of Applied Computer Science at Dalhousie University in Halifax, Nova Scotia, Canada.",
-            "Throughout my career at Maruti Techlabs, I've engineered and deployed enterprise applications using .NET Core, C#, and Microsoft SQL Server, while also developing front-end solutions with Angular and React.",
-            "I'm passionate about building scalable, efficient applications and solving complex problems. My experience spans from optimizing database performance to implementing CI/CD pipelines and developing microservices architectures.",
-          ].map((paragraph, index) => (
-            <motion.p
-              key={index}
-              className="text-gray-300 mb-6"
-              whileHover={{ scale: 1.05, color: "#60A5FA" }}
-              transition={{ duration: 0.2 }}
-            >
-              {paragraph}
-            </motion.p>
-          ))}
+          <div className="space-y-6 text-left">
+            {[
+              "As a **Full-Stack Software Developer** with **2.5+ years of experience**, I specialize in building scalable, event-driven systems using modern stacks like .NET, Java, and cloud-native tools. Currently pursuing a Master of Applied Computer Science at Dalhousie University, I blend academic rigor with hands-on expertise in microservices, DevOps automation, and AI-driven solutions.",
+              "At Maruti Techlabs, I modernized legacy systems to **reduce security risks by 60%** and **improved API performance by 40%** using .NET Core and Entity Framework. My work includes designing fault-tolerant microservices with RabbitMQ and Terraform-driven AWS/Azure deployments, ensuring **99.9% data consistency** for mission-critical applications. I also pioneered cost-saving innovations, like replacing legacy polling with real-time Gmail notifications using Google Pub/Sub, slashing cloud costs by **70%**.",
+              "I thrive in **Agile environments**, leading cross-functional teams to streamline CI/CD pipelines with Kubernetes, GitHub Actions, and Apache Airflow. My projects, such as a serverless AI photo analyzer (AWS Rekognition) and a real-time delivery tracking platform (Kafka, Stripe), highlight my ability to merge scalability with cutting-edge tech like AI/ML and geospatial analytics.",
+              "Beyond code, I prioritize **clean architecture** (SOLID, TDD) and **regulatory compliance** (PCI-DSS), ensuring solutions are both robust and audit-ready. Let’s connect if you’re seeking a developer who transforms complex challenges into efficient, scalable systems!",
+            ].map((paragraph, index) => (
+              <motion.p
+                key={index}
+                className="text-gray-300 leading-relaxed"
+                whileHover={{ scale: 1.02, color: "#60A5FA" }}
+                transition={{ duration: 0.2 }}
+              >
+                {paragraph}
+              </motion.p>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default About
-
+export default About;

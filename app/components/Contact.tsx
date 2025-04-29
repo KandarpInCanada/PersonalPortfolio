@@ -1,23 +1,31 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { Mail, Linkedin, Phone, FileText, Github } from "lucide-react"
-import { AnimatedGradient } from "./ui/animated-gradient"
-import Link from "next/link"
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Mail, Linkedin, Phone, FileText, Github } from "lucide-react";
+import { AnimatedGradient } from "./ui/animated-gradient";
+import Link from "next/link";
 
 const Contact = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   const contactInfo = [
-    { icon: Mail, text: "kandarp.canada@gmail.com", href: "mailto:kandarp.canada@gmail.com" },
-    { icon: Linkedin, text: "LinkedIn", href: "https://www.linkedin.com/in/kandarp-patel" },
+    {
+      icon: Mail,
+      text: "kandarp.canada@gmail.com",
+      href: "mailto:kandarp.canada@gmail.com",
+    },
+    {
+      icon: Linkedin,
+      text: "LinkedIn",
+      href: "https://www.linkedin.com/in/kandarp-patel",
+    },
     { icon: Github, text: "GitHub", href: "https://github.com/kandarp-patel" },
     { icon: Phone, text: "+1 (902) 448-7485", href: "tel:+19024487485" },
-  ]
+  ];
 
   return (
     <section id="contact" className="py-20 bg-[#0A0A0A]">
@@ -30,10 +38,12 @@ const Contact = () => {
           ref={ref}
         >
           <AnimatedGradient className="inline-block">
-            <h2 className="text-3xl md:text-4xl font-bold text-white px-4 py-2">Get in Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white px-4 py-2">
+              Get in Touch
+            </h2>
           </AnimatedGradient>
         </motion.div>
-        <div className="max-w-2xl mx-auto">
+        <div className="mx-auto">
           {contactInfo.map((item, index) => (
             <motion.a
               key={index}
@@ -65,8 +75,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Contact
-
+export default Contact;
