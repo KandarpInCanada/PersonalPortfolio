@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Spotlight } from "./ui/spotlight"
+import { motion } from "framer-motion";
+import { Spotlight } from "./ui/spotlight";
 
 const Hero = () => {
   return (
@@ -17,7 +17,7 @@ const Hero = () => {
             Hi, I'm <span className="text-blue-400">Kandarp Patel</span>
           </h1>
           <h2 className="text-2xl md:text-3xl text-gray-300 mb-6 relative">
-            Software Developer
+            Software Developer | Seeking Fall 2025 Co-op
             <motion.span
               className="absolute -bottom-2 left-0 w-full h-0.5 bg-blue-400"
               initial={{ scaleX: 0 }}
@@ -25,31 +25,18 @@ const Hero = () => {
               transition={{ duration: 1, delay: 0.5 }}
             />
           </h2>
-          <p className="text-gray-400 mb-8">
-            Software Developer with 3 years of experience, currently pursuing a Master of Applied Computer Science at
-            Dalhousie University. Passionate about building scalable applications and solving complex problems.
+          <p className="text-gray-400 mb-8 mx-auto">
+            Master of Applied Computer Science candidate at Dalhousie University
+            (Aug 2024 - Dec 2025) with 2.5+ years of professional experience
+            building enterprise solutions. Skilled in full-stack development,
+            cloud-native architectures (AWS/Azure), and AI integration. Seeking
+            to leverage expertise in microservices, distributed systems, and
+            DevOps automation to drive innovation during my co-op term.
           </p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-          >
-            <motion.a
-              href="#contact"
-              className="group relative inline-flex items-center justify-center px-8 py-3 overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-blue-400 transition-transform duration-300 ease-out hover:scale-105"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-            >
-              <span className="relative text-white font-semibold">Get in Touch</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[length:200%_100%] animate-gradient-x" />
-            </motion.a>
-          </motion.div>
         </motion.div>
       </div>
     </Spotlight>
-  )
-}
+  );
+};
 
-export default Hero
-
+export default Hero;
