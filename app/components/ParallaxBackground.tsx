@@ -319,50 +319,75 @@ const ParallaxBackground = () => {
           <linearGradient id="linear-gradient-2" x1="214.61" y1="508.49" x2="166.09" y2="361.12" xlinkHref="#linear-gradient" />
           <linearGradient id="linear-gradient-3" x1="57.65" y1="508.01" x2="448.08" y2="508.01" xlinkHref="#linear-gradient" />
           <linearGradient id="linear-gradient-4" x1="193.48" y1="508.3" x2="761.05" y2="508.3" xlinkHref="#linear-gradient" />
+          <symbol id="tree" viewBox="0 0 40 80">
+            <path
+              d="M20 0c-4 10-8 18-14 26 4 0 8 0 10 2-6 4-10 10-14 16 4-2 8-2 10 0-6 4-10 10-12 16a26 26 0 0 1 10-2c-8 8-10 14-10 14 6-2 10-2 12 2v6h8v-6c2-4 6-4 12-2 0 0-2-6-10-14a26 26 0 0 1 10 2c-2-6-6-12-12-16 2-2 6-2 10 0-4-6-8-12-14-16 2-2 6-2 10-2-6-8-10-16-14-26Z"
+              fill="currentColor"
+            />
+          </symbol>
         </defs>
 
-        <rect id="bg" width="750" height="500" opacity="0.85" fill="url(#bg_grad)" />
+        <rect id="bg" width="750" height="500" opacity="0.9" fill="url(#bg_grad)" />
 
-        {/* drifting clouds - static positions adjusted by GSAP */}
+        {/* drifting clouds - detailed silhouettes */}
         <g id="clouds" fill="#fefefe">
-          <ellipse id="cloud4" cx="560" cy="130" rx="120" ry="45" opacity="0.7" />
-          <ellipse id="cloud3" cx="320" cy="150" rx="150" ry="55" opacity="0.65" />
-          <ellipse id="cloud2" cx="180" cy="90" rx="110" ry="45" opacity="0.6" />
-          <ellipse id="cloud1" cx="60" cy="140" rx="140" ry="50" opacity="0.55" />
+          <path
+            id="cloud4"
+            d="M440 120c18-22 58-12 72 6 12-14 34-20 52-12 3-16 22-24 40-18 8-16 36-20 48-2 6-20 32-30 54-18 24-22 70-4 60 32 22-12 54 4 58 28 10-6 32 0 32 10 0 16-50 20-90 12-42-8-70-10-96-4-26 6-60 22-90 22-32 0-70-14-100-16-16 0-32 4-40-2-8-6-10-16 0-26Z"
+            opacity="0.75"
+          />
+          <path
+            id="cloud3"
+            d="M120 150c-18-28-54-30-84-12-32-16-70-22-96 8 2-28-42-44-54-12-30-42-102-40-120,8-6 14-26 16-32 0-14-34-72-58-90-8-10-10-30-14-42 4a56 56 0 0 0-42 8c-34-10-68 12-74 44-8 30 12 50 38 56 26 8 58 0 86-6 90-22 142-22 194-12 58 10 116 34 170 26 22-4 46-16 68-14 22 2 44 14 68 12 32-4 58-32 32-60Z"
+            opacity="0.6"
+            transform="translate(560 40) scale(0.9)"
+          />
+          <path
+            id="cloud2"
+            d="M200 110c22-12 54-14 78-10 6-12 30-14 40-4 24-20 72-6 94 8 22-12 64-18 80 0 14-2 44-8 50 10a60 60 0 0 1 44 8c20-8 46-8 64 8s10 46-6 54c-36 18-90-6-132-10-42-6-90 2-132 2-40 0-82-6-120-8-32-2-64 0-96 6-30 6-64 16-82 6-12-6-16-22-6-32Z"
+            opacity="0.7"
+            transform="translate(-520 10) scale(1.05)"
+          />
+          <path
+            id="cloud1"
+            d="M160 180c-18-20-50-24-74-16-16-18-50-28-68-8-26-20-78-42-96-6-12-8-32-6-42 6-18-40-92-60-108-6-14-14-40-4-52 12-22-4-44-14-64 8-12-4-32-8-46 12-6 12 0 30 14 38 24 12 56 6 82 6 32 2 66 4 98 4 44 0 94 0 138 4 46 4 92 10 134 10 34 0 60-10 86-18 20-6 44-12 60-8 10 2 18 12 30 12 16 0 26-18 14-34Z"
+            opacity="0.65"
+            transform="translate(-540 50) scale(1.12)"
+          />
         </g>
 
         {/* starter clouds for subtle motion */}
-        <g id="cloudStart-L" fill="#ffffff" opacity="0.6">
-          <ellipse cx="90" cy="70" rx="80" ry="35" />
-          <ellipse cx="150" cy="80" rx="60" ry="28" />
+        <g id="cloudStart-L" fill="#ffffff" opacity="0.75">
+          <path d="M90 60c-18 0-32 8-38 18-30-8-60 8-54 22 6 15 31 16 48 10 11 6 28 6 40 0 18 9 54 7 66-6 14-14-4-36-28-30-7-9-22-14-34-14Z" />
         </g>
-        <g id="cloudStart-R" fill="#ffffff" opacity="0.6">
-          <ellipse cx="640" cy="60" rx="80" ry="35" />
-          <ellipse cx="700" cy="80" rx="55" ry="26" />
+        <g id="cloudStart-R" fill="#ffffff" opacity="0.75">
+          <path d="M640 70c-16 0-28 6-34 14-22-6-48 8-42 22 6 14 30 15 44 8 10 5 25 5 36 0 16 8 46 6 56-6 12-12-4-32-24-26-6-8-20-12-32-12Z" />
         </g>
 
         {/* big clouds for scene 1 parallax */}
         <g id="cloudsBig-L" fill="#ffffff" opacity="0.35">
-          <ellipse cx="120" cy="200" rx="260" ry="80" />
+          <path d="M-40 240c-30 6-46 22-48 38-3 24 22 44 72 44 40 0 98-16 144-10 50 7 86-6 94-26 10-24-22-44-70-40-22-20-64-32-108-26-30 4-60 10-84 20Z" />
         </g>
         <g id="cloudsBig-R" fill="#ffffff" opacity="0.35">
-          <ellipse cx="640" cy="210" rx="260" ry="90" />
+          <path d="M430 230c-38 6-62 24-64 42-4 28 30 52 98 52 56 0 122-20 180-12 58 8 96-8 104-32 10-28-24-52-82-46-24-22-72-36-120-30-40 6-76 12-116 26Z" />
         </g>
 
         {/* scene 2 assets */}
         <g id="scene2">
-          <g id="bats" opacity="0">
-            <path d="M20 20c10-8 22-8 32 0 10-8 22-8 32 0-12 6-20 16-32 16S32 26 20 20Z" fill="#112129" />
-            <path d="M120 35c8-6 18-6 26 0 0 0-10 10-26 10s-26-10-26-10c8-6 18-6 26 0Z" fill="#112129" />
-            <path d="M80 10c6-4 12-4 18 0 6-4 12-4 18 0-7 5-12 12-18 12S87 15 80 10Z" fill="#112129" />
+          <g id="bats" opacity="0" fill="#112129">
+            <path d="M470 180c8-8 22-6 30 4 10-8 22-8 30 0-10 4-20 16-30 16s-20-10-30-20Z" />
+            <path d="M540 210c6-6 16-6 24 0 0 0-10 10-24 10s-24-10-24-10c6-6 16-6 24 0Z" />
+            <path d="M500 150c8-6 18-6 26 0 8-6 18-6 26 0-10 6-18 16-26 16s-16-8-26-16Z" />
+            <path d="M560 250c8-6 18-6 26 0 0 0-10 10-26 10s-26-10-26-10c8-6 18-6 26 0Z" />
+            <path d="M610 230c8-6 18-6 26 0 0 0-10 10-26 10s-26-10-26-10c8-6 18-6 26 0Z" />
           </g>
           <g id="hills2">
-            <path id="h2-6" d="M0 410 Q120 360 240 380 T480 380 T750 360 L750 500 H0Z" fill="url(#lg4)" />
-            <path id="h2-5" d="M0 430 Q150 390 300 430 T600 430 T750 420 L750 500 H0Z" fill="url(#lg5)" />
-            <path id="h2-4" d="M0 450 Q180 410 360 450 T750 450 L750 500 H0Z" fill="url(#lg6)" />
-            <path id="h2-3" d="M0 470 Q200 440 400 470 T750 470 L750 500 H0Z" fill="url(#lg7)" />
-            <path id="h2-2" d="M0 490 Q220 460 440 490 T750 490 L750 500 H0Z" fill="url(#lg8)" />
-            <path id="h2-1" d="M0 500 Q240 470 480 500 T750 500 Z" fill="#1d1d3a" />
+            <path id="h2-6" d="M0 420 C140 380 260 360 380 380 C520 410 640 400 750 380 L750 500 L0 500Z" fill="url(#lg4)" />
+            <path id="h2-5" d="M0 440 C140 400 280 390 420 410 C560 430 660 420 750 400 L750 500 L0 500Z" fill="url(#lg5)" />
+            <path id="h2-4" d="M0 460 C140 420 300 420 460 440 C600 460 690 450 750 430 L750 500 L0 500Z" fill="url(#lg6)" />
+            <path id="h2-3" d="M0 480 C160 440 320 440 500 460 C640 480 710 470 750 450 L750 500 L0 500Z" fill="url(#lg7)" />
+            <path id="h2-2" d="M0 500 C180 460 360 470 540 480 C660 488 720 480 750 470 L750 500 L0 500Z" fill="url(#lg8)" />
+            <path id="h2-1" d="M0 520 C200 480 380 490 560 500 C680 505 730 500 750 490 L750 520 L0 520Z" fill="#1d1d3a" />
           </g>
         </g>
 
@@ -373,20 +398,24 @@ const ParallaxBackground = () => {
             <circle cx="620" cy="80" r="25" fill="url(#fstar-grad)" />
           </g>
           <g id="stars" fill="#fff" opacity="0">
-            <circle cx="90" cy="60" r="1.5" />
-            <circle cx="180" cy="120" r="1.5" />
-            <circle cx="260" cy="40" r="1.5" />
-            <circle cx="340" cy="90" r="1.5" />
-            <circle cx="430" cy="50" r="1.5" />
-            <circle cx="520" cy="110" r="1.5" />
-            <circle cx="610" cy="70" r="1.5" />
+            <circle cx="120" cy="60" r="1.2" />
+            <circle cx="180" cy="100" r="1.2" />
+            <circle cx="240" cy="50" r="1.2" />
+            <circle cx="300" cy="90" r="1.2" />
+            <circle cx="360" cy="40" r="1.2" />
+            <circle cx="420" cy="80" r="1.2" />
+            <circle cx="480" cy="30" r="1.2" />
+            <circle cx="540" cy="70" r="1.2" />
+            <circle cx="600" cy="50" r="1.2" />
+            <circle cx="660" cy="90" r="1.2" />
+            <circle cx="720" cy="60" r="1.2" />
           </g>
           <g id="h3">
-            <path id="h3-1" d="M0 520 Q200 470 400 520 T750 520 L750 600 0 600Z" fill="url(#linear-gradient-3)" opacity="0.8" />
-            <path id="h3-2" d="M0 510 Q220 460 440 510 T750 510 L750 600 0 600Z" fill="url(#linear-gradient)" opacity="0.7" />
-            <path id="h3-3" d="M0 500 Q240 450 480 500 T750 500 L750 600 0 600Z" fill="url(#linear-gradient-4)" opacity="0.6" />
-            <path id="h3-4" d="M0 490 Q260 440 520 490 T750 490 L750 600 0 600Z" fill="url(#linear-gradient-2)" opacity="0.5" />
-            <path id="h3-5" d="M0 480 Q280 430 560 480 T750 480 L750 600 0 600Z" fill="#25193f" opacity="0.4" />
+            <path id="h3-1" d="M0 520 C160 470 300 470 440 500 C580 530 680 520 750 500 L750 600 0 600Z" fill="url(#linear-gradient-3)" opacity="0.9" />
+            <path id="h3-2" d="M0 510 C180 460 340 460 500 490 C620 520 700 510 750 490 L750 600 0 600Z" fill="url(#linear-gradient)" opacity="0.8" />
+            <path id="h3-3" d="M0 500 C200 450 380 450 560 480 C660 500 720 490 750 470 L750 600 0 600Z" fill="url(#linear-gradient-4)" opacity="0.7" />
+            <path id="h3-4" d="M0 490 C220 440 420 440 600 470 C700 490 740 480 750 460 L750 600 0 600Z" fill="url(#linear-gradient-2)" opacity="0.6" />
+            <path id="h3-5" d="M0 480 C240 430 460 430 640 460 C720 470 750 460 750 450 L750 600 0 600Z" fill="#201631" opacity="0.6" />
           </g>
         </g>
 
@@ -400,15 +429,39 @@ const ParallaxBackground = () => {
 
         {/* hills - scene1 foreground */}
         <g id="hills1">
-          <path id="h1-9" d="M0 330 Q180 300 360 330 T750 320 L750 500 H0Z" fill="url(#grad1)" />
-          <path id="h1-8" d="M0 350 Q200 320 400 350 T750 330 L750 500 H0Z" fill="url(#grad2)" />
-          <path id="h1-7" d="M0 360 Q220 330 440 360 T750 340 L750 500 H0Z" fill="url(#grad3)" />
-          <path id="h1-6" d="M0 380 Q200 350 400 380 T750 360 L750 500 H0Z" fill="url(#grad4)" />
-          <path id="h1-5" d="M0 400 Q220 370 440 400 T750 380 L750 500 H0Z" fill="url(#grad5)" />
-          <path id="h1-4" d="M0 420 Q240 390 480 420 T750 400 L750 500 H0Z" fill="url(#grad6)" />
-          <path id="h1-3" d="M0 430 Q260 410 520 430 T750 410 L750 500 H0Z" fill="url(#grad7)" />
-          <path id="h1-2" d="M0 440 Q280 420 560 440 T750 430 L750 500 H0Z" fill="url(#grad8)" />
-          <path id="h1-1" d="M0 460 Q300 440 600 460 T750 450 L750 500 H0Z" fill="url(#grad9)" />
+          <path id="h1-9" d="M0 330 C120 300 220 290 320 310 C420 330 520 300 620 310 C700 320 750 300 750 300 L750 500 L0 500Z" fill="url(#grad1)" />
+          <path id="h1-8" d="M0 350 C140 320 260 310 380 330 C500 350 600 320 700 330 C740 334 750 330 750 330 L750 500 L0 500Z" fill="url(#grad2)" />
+          <path id="h1-7" d="M0 360 C160 330 300 320 440 340 C560 360 660 340 740 340 L750 500 L0 500Z" fill="url(#grad3)" />
+          <path id="h1-6" d="M0 380 C150 345 260 340 380 360 C520 390 640 360 750 350 L750 500 L0 500Z" fill="url(#grad4)" />
+          <path id="h1-5" d="M0 400 C160 365 300 360 440 380 C560 395 660 380 750 370 L750 500 L0 500Z" fill="url(#grad5)" />
+          <path id="h1-4" d="M0 420 C170 380 310 380 460 400 C590 420 690 400 750 390 L750 500 L0 500Z" fill="url(#grad6)" />
+          <path id="h1-3" d="M0 430 C190 395 340 400 500 420 C630 435 710 420 750 410 L750 500 L0 500Z" fill="url(#grad7)" />
+          <path id="h1-2" d="M0 440 C210 410 370 420 540 430 C660 440 720 430 750 420 L750 500 L0 500Z" fill="url(#grad8)" />
+          <path id="h1-1" d="M0 460 C230 430 400 440 590 450 C680 455 730 450 750 440 L750 500 L0 500Z" fill="url(#grad9)" />
+        </g>
+
+        {/* pine trees for depth */}
+        <g id="trees-back" fill="#0f0d24" opacity="0.65">
+          <use href="#tree" x="40" y="360" width="40" height="80" />
+          <use href="#tree" x="120" y="370" width="44" height="88" />
+          <use href="#tree" x="200" y="360" width="36" height="76" />
+          <use href="#tree" x="260" y="380" width="42" height="84" />
+          <use href="#tree" x="340" y="370" width="40" height="82" />
+          <use href="#tree" x="420" y="380" width="46" height="90" />
+          <use href="#tree" x="500" y="380" width="40" height="82" />
+          <use href="#tree" x="580" y="370" width="44" height="88" />
+          <use href="#tree" x="660" y="380" width="40" height="82" />
+        </g>
+        <g id="trees-front" fill="#0a0918">
+          <use href="#tree" x="10" y="400" width="54" height="110" />
+          <use href="#tree" x="90" y="410" width="60" height="120" />
+          <use href="#tree" x="170" y="405" width="56" height="116" />
+          <use href="#tree" x="250" y="420" width="64" height="128" />
+          <use href="#tree" x="330" y="415" width="58" height="118" />
+          <use href="#tree" x="420" y="425" width="66" height="132" />
+          <use href="#tree" x="510" y="415" width="58" height="118" />
+          <use href="#tree" x="600" y="420" width="64" height="128" />
+          <use href="#tree" x="690" y="415" width="58" height="118" />
         </g>
 
         {/* info label */}
