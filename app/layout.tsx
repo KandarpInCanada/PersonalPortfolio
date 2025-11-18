@@ -2,6 +2,7 @@ import "./globals.css"
 import { Inter } from "next/font/google"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
+import ParallaxBackground from "./components/ParallaxBackground"
 import type React from "react"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-slate-950 text-slate-50 antialiased`}
       >
+        <ParallaxBackground />
         <div className="fixed inset-0 -z-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(14,165,233,0.08),transparent_30%),linear-gradient(180deg,#020617,rgba(2,6,23,0.4))]" />
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light" />
