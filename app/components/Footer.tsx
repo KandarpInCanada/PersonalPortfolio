@@ -1,34 +1,28 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0A0A0A] text-white py-8">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <Link href="/" className="text-2xl font-bold">
-              Kandarp Patel
-            </Link>
-          </div>
-          <div className="flex space-x-4">
-            <a href="https://www.linkedin.com/in/kandarp-patel" className="hover:text-blue-400 transition-colors">
-              LinkedIn
-            </a>
-            <a href="https://github.com/kandarp-patel" className="hover:text-blue-400 transition-colors">
-              GitHub
-            </a>
-            <a href="mailto:kandarp.canada@gmail.com" className="hover:text-blue-400 transition-colors">
-              Email
-            </a>
-          </div>
+    <footer className="border-t border-white/5 bg-slate-950/80 py-10 backdrop-blur">
+      <div className="container mx-auto flex flex-col gap-4 px-6 text-sm text-slate-300/80 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-white font-semibold">Kandarp Patel</p>
+          <p>Cloud-native software engineer · Halifax, Canada</p>
         </div>
-        <div className="mt-8 text-center text-sm text-gray-400">
-          © {new Date().getFullYear()} Kandarp Patel. All rights reserved.
+        <div className="flex flex-wrap gap-4">
+          <Link href="https://www.linkedin.com/in/kandarp-patel" className="hover:text-white transition" target="_blank">
+            LinkedIn
+          </Link>
+          <Link href="https://github.com/kandarp-patel" className="hover:text-white transition" target="_blank">
+            GitHub
+          </Link>
+          <Link href="mailto:kandarp.canada@gmail.com" className="hover:text-white transition">
+            Email
+          </Link>
         </div>
+        <p className="text-slate-400/80">© {new Date().getFullYear()} Kandarp Patel</p>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
-
+export default Footer;

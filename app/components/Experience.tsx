@@ -9,130 +9,110 @@ const experiences = [
     title: "Software Developer",
     company: "Maruti Techlabs",
     location: "Ahmedabad, India",
-    period: "July 2023 – July 2024",
-    description: [
-      "Conducted peer code reviews across 10+ Agile sprints, enforcing SOLID principles and TDD, reducing production bugs by 35%",
-      "Optimized REST/OData API performance by 40% using .NET and Entity Framework in high-throughput systems",
-      "Orchestrated IaC with Terraform and AWS EKS, achieving 50% faster deployments and 90% SLA adherence",
-      "Engineered fault-tolerant payment system using MassTransit state machines and RabbitMQ, reducing payment failures by 40%",
-      "Presented sprint outcomes with release notes and architecture diagrams to stakeholders",
-      "Developed Terraform module documentation and deployment playbooks for DevOps teams",
+    period: "Jul 2023 – Jul 2024",
+    highlights: [
+      "Optimized REST/OData services with .NET + Entity Framework to cut latency by 40% in high-throughput systems.",
+      "Hardened payment flows with MassTransit state machines and RabbitMQ, reducing failed transactions by 40%.",
+      "Codified infrastructure with Terraform and deployed to AWS EKS, trimming release times by ~50% and keeping SLAs above 90%.",
+      "Rounded out each sprint with release notes, architecture diagrams, and stakeholder demos to keep teams aligned.",
     ],
-    tools:
-      ".NET, C#, Terraform, AWS EKS, Kubernetes, RabbitMQ, MassTransit, Entity Framework, New Relic, PCI-DSS",
+    stack: ".NET, C#, Terraform, AWS EKS, Kubernetes, RabbitMQ, MassTransit, EF Core, New Relic, PCI-DSS",
   },
   {
     title: "Associate Software Developer",
     company: "Maruti Techlabs",
     location: "Ahmedabad, India",
-    period: "July 2022 - May 2023",
-    description: [
-      "Architected fault-tolerant microservice using RabbitMQ/.NET to sync 10+ services with Salesforce (99.9% data consistency)",
-      "Automated Apache Airflow schedulers for mission-critical workflows including RabbitMQ monitoring system",
-      "Designed Airflow DAGs triggering Slack/email alerts for >10K pending messages, reducing processing lag by 80%",
-      "Built Elasticsearch-to-S3 data pipeline achieving 70% faster upload throughput with Python/boto3",
-      "Pioneered Gmail push notification POC using Google Pub/Sub/Gmail API, cutting cloud costs by 70%",
-      "Developed OpenAPI-based C# source code generator reducing SDK development efforts by 30%",
+    period: "Jul 2022 – May 2023",
+    highlights: [
+      "Built resilient Salesforce sync microservice (RabbitMQ/.NET) achieving 99.9% data consistency across 10+ services.",
+      "Automated Apache Airflow DAGs for mission-critical monitoring; reduced queue backlogs by 80% for 10K+ messages.",
+      "Designed Elasticsearch → S3 export pipeline with Python/boto3 for 70% faster throughput and predictable costs.",
+      "Shipped Gmail push-notification POC (Google Pub/Sub) replacing polling and slashing cloud spend by 70%.",
     ],
-    tools:
-      ".NET, RabbitMQ, Apache Airflow, Python, AWS S3, Elasticsearch, Google Pub/Sub, OpenAPI, Salesforce",
+    stack: ".NET, RabbitMQ, Apache Airflow, Python, AWS S3, Elasticsearch, Google Pub/Sub, OpenAPI, Salesforce",
   },
   {
     title: "Software Developer Intern",
     company: "Maruti Techlabs",
     location: "Ahmedabad, India",
-    period: "December 2021 - May 2022",
-    description: [
-      "Modernized legacy microservices to latest .NET with Docker/Kubernetes, reducing security vulnerabilities by 60%",
-      "Improved API response times by 25% through containerization and orchestration",
-      "Participated in Agile Scrum ceremonies, improving sprint completion rates by 20%",
-      "Implemented CI/CD pipelines for microservices deployment",
-      "Conducted performance profiling and optimization of SQL Server databases",
+    period: "Dec 2021 – May 2022",
+    highlights: [
+      "Modernized legacy microservices to .NET containers on Kubernetes, shrinking vulnerability surface by 60%.",
+      "Boosted API response times by ~25% through containerization, profiling, and database query tuning.",
+      "Implemented CI/CD pipelines and test gating for microservices to improve release reliability.",
+      "Collaborated across Agile ceremonies, improving sprint predictability while learning fast from senior devs.",
     ],
-    tools: ".NET, Docker, Kubernetes, SQL Server, Azure DevOps, Git, Postman",
+    stack: ".NET, Docker, Kubernetes, SQL Server, Azure DevOps, Git, Postman",
   },
 ];
 
 const Experience = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
 
   return (
-    <section id="experience" className="py-20 bg-[#0A0A0A]">
+    <section id="experience" className="relative py-20">
       <div className="container mx-auto px-6">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           ref={ref}
         >
           <AnimatedGradient className="inline-block">
-            <h2 className="text-3xl md:text-4xl font-bold text-white px-4 py-2">
-              Professional Experience
-            </h2>
+            <h2 className="px-4 py-2 text-3xl font-bold text-white md:text-4xl">Professional experience</h2>
           </AnimatedGradient>
+          <p className="mt-4 text-slate-300/80">
+            Shipping production features, leading release playbooks, and keeping systems observable.
+          </p>
         </motion.div>
 
-        <div className="mx-auto space-y-8">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.title}
-              className="group bg-[#111111] rounded-xl p-6 border border-transparent hover:border-blue-900 transition-all"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.01 }}
-            >
-              <div className="flex flex-col md:flex-row justify-between mb-4">
-                <motion.h3
-                  className="text-xl font-semibold text-blue-400 mb-2"
-                  whileHover={{ color: "#60A5FA" }}
-                >
-                  {exp.title}
-                </motion.h3>
-                <motion.span
-                  className="text-sm text-gray-400"
-                  whileHover={{ color: "#D1D5DB" }}
-                >
-                  {exp.period}
-                </motion.span>
-              </div>
+        <div className="relative">
+          <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-transparent via-blue-500/30 to-transparent md:left-1/2" />
 
-              <motion.div className="mb-4">
-                <p className="text-gray-300 font-medium">{exp.company}</p>
-                <p className="text-sm text-gray-400">{exp.location}</p>
-              </motion.div>
-
-              <ul className="space-y-3 mb-6">
-                {exp.description.map((item, i) => (
-                  <motion.li
-                    key={i}
-                    className="text-gray-300 pl-4 border-l-2 border-blue-800 hover:border-blue-400 transition-colors"
-                    whileHover={{ x: 5 }}
-                  >
-                    {item}
-                  </motion.li>
-                ))}
-              </ul>
-
+          <div className="space-y-8">
+            {experiences.map((exp, idx) => (
               <motion.div
-                className="flex flex-wrap gap-2"
-                whileHover={{ opacity: 1 }}
+                key={exp.title}
+                className={`relative rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur glow-ring ${
+                  idx % 2 === 0 ? "md:ml-auto md:w-[48%]" : "md:mr-auto md:w-[48%]"
+                }`}
+                initial={{ opacity: 0, y: 24 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                {exp.tools.split(", ").map((tool, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 text-xs bg-[#252525] text-gray-300 rounded-full"
-                  >
-                    {tool}
+                <div className="absolute left-[14px] top-8 h-3 w-3 rounded-full bg-gradient-to-br from-blue-300 to-cyan-400 md:left-[-11px]" />
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
+                    <p className="text-slate-300/90">{exp.company}</p>
+                  </div>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200">
+                    {exp.period}
                   </span>
-                ))}
+                </div>
+                <p className="mt-1 text-sm text-slate-400">{exp.location}</p>
+                <ul className="mt-4 space-y-2 text-sm text-slate-200/90">
+                  {exp.highlights.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-blue-400" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {exp.stack.split(", ").map((tool) => (
+                    <span
+                      key={tool}
+                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

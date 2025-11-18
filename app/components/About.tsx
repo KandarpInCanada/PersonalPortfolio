@@ -3,69 +3,92 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { AnimatedGradient } from "./ui/animated-gradient";
-import { ReactNode } from "react";
+import { Lightbulb, ShieldCheck, Sparkle } from "lucide-react";
+
+const pillars = [
+  {
+    title: "Architecture-first",
+    description:
+      "I start with observability, data contracts, and failure modes before pushing code. The result: systems that scale and stay reliable.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Impact you can measure",
+    description:
+      "From shaving 40% off API latency to cutting cloud spend by 70% with Pub/Sub, I track wins in performance, resiliency, and cost.",
+    icon: Lightbulb,
+  },
+  {
+    title: "Product polish",
+    description:
+      "I care about the last mile — crisp UX, accessible interfaces, and thoughtful microcopy that make complex tools feel effortless.",
+    icon: Sparkle,
+  },
+];
 
 const About = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  // Type-safe highlight parser
-  const parseHighlight = (text: string): ReactNode[] => {
-    const parts = text.split(/(\*\*.*?\*\*)/g);
-    return parts.map((part: string, i: number) => {
-      if (part.startsWith("**") && part.endsWith("**")) {
-        return (
-          <span key={i} className="text-blue-400 font-semibold">
-            {part.slice(2, -2)}
-          </span>
-        );
-      }
-      return part;
-    });
-  };
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
 
   return (
-    <section id="about" className="py-20 bg-[#0A0A0A]">
+    <section id="about" className="relative py-20">
       <div className="container mx-auto px-6">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           ref={ref}
         >
           <AnimatedGradient className="inline-block">
-            <h2 className="text-3xl md:text-4xl font-bold text-white px-4 py-2">
-              About Me
-            </h2>
+            <h2 className="px-4 py-2 text-3xl font-bold text-white md:text-4xl">About me</h2>
           </AnimatedGradient>
         </motion.div>
-        <motion.div
-          className="mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <div className="space-y-6 text-left">
-            {[
-              "As a Full-Stack Software Developer with 2.5+ years of experience, I specialize in building scalable, event-driven systems using modern stacks like .NET, Java, and cloud-native tools. Currently pursuing a Master of Applied Computer Science at Dalhousie University, I blend academic rigor with hands-on expertise in microservices, DevOps automation, and AI-driven solutions.",
-              "At Maruti Techlabs, I modernized legacy systems to reduce security risks by 60% and improved API performance by 40% using .NET Core and Entity Framework. My work includes designing fault-tolerant microservices with RabbitMQ and Terraform-driven AWS/Azure deployments, ensuring 99.9% data consistency for mission-critical applications. I also pioneered cost-saving innovations, like replacing legacy polling with real-time Gmail notifications using Google Pub/Sub, slashing cloud costs by 70%.",
-              "I thrive in Agile environments, leading cross-functional teams to streamline CI/CD pipelines with Kubernetes, GitHub Actions, and Apache Airflow. My projects, such as a serverless AI photo analyzer (AWS Rekognition) and a real-time delivery tracking platform (Kafka, Stripe), highlight my ability to merge scalability with cutting-edge tech like AI/ML and geospatial analytics.",
-              "Beyond code, I prioritize clean architecture (SOLID, TDD) and regulatory compliance (PCI-DSS), ensuring solutions are both robust and audit-ready. Let’s connect if you’re seeking a developer who transforms complex challenges into efficient, scalable systems!",
-            ].map((paragraph, index) => (
-              <motion.p
-                key={index}
-                className="text-gray-300 leading-relaxed"
-                whileHover={{ scale: 1.02, color: "#60A5FA" }}
-                transition={{ duration: 0.2 }}
+
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <motion.div
+            className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur glow-ring"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <p className="text-lg text-slate-200/90">
+              I&apos;m a systems-minded software engineer blending backend depth with polished front-end craft. My happy
+              place is where microservices, data streaming, and sleek interfaces intersect. I iterate fast, measure
+              results, and ship with guardrails like IaC, feature flags, and strong CI/CD.
+            </p>
+            <p className="text-slate-300/80">
+              I&apos;ve shipped across healthcare, logistics, and AI-heavy products — observability dashboards, payment
+              flows, serverless photo intelligence, and real-time tracking. I thrive in collaborative, bias-for-action
+              teams that value clarity and documentation as much as code.
+            </p>
+            <div className="flex flex-wrap items-center gap-3 pt-2 text-sm text-slate-200">
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">Based in Halifax 🇨🇦</span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+                Master of Applied CS @ Dalhousie
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">Co-op: Fall 2025</span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="grid gap-4 md:grid-cols-3 lg:grid-cols-2 lg:gap-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {pillars.map((item, idx) => (
+              <div
+                key={item.title}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/70 via-slate-900/40 to-blue-900/20 p-4 transition hover:-translate-y-1"
               >
-                {parseHighlight(paragraph)}
-              </motion.p>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
+                <item.icon className="h-6 w-6 text-blue-300" />
+                <h3 className="mt-3 text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm text-slate-200/80">{item.description}</p>
+              </div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

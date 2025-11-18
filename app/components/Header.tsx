@@ -1,17 +1,17 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+
+const menuItems = ["about", "skills", "projects", "experience", "contact"]
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 32)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -26,76 +26,91 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#0A0A0A] shadow-lg" : "bg-transparent"
-      }`}
-      initial={{ y: -100 }}
+      className="fixed inset-x-0 top-0 z-50"
+      initial={{ y: -80 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-white">
-          Kandarp Patel
-        </Link>
+      <div
+        className={`mx-auto mt-4 w-[95%] max-w-6xl rounded-2xl border border-white/5 px-4 py-3 backdrop-blur-lg transition-all duration-300 ${
+          isScrolled ? "bg-slate-900/70 shadow-2xl shadow-blue-950/30" : "bg-slate-900/40"
+        }`}
+      >
+        <nav className="flex items-center justify-between gap-4">
+          <Link href="/" className="text-lg font-semibold tracking-tight text-white md:text-xl">
+            Kandarp Patel
+          </Link>
 
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden text-white focus:outline-none"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+          <button
+            className="md:hidden rounded-full border border-white/10 p-2 text-white/80 transition hover:border-white/25 hover:text-white"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            aria-label="Toggle navigation"
           >
             {isMobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" className="h-5 w-5">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" className="h-5 w-5">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
             )}
-          </svg>
-        </button>
+          </button>
 
-        {/* Desktop menu */}
-        <ul className="hidden md:flex space-x-6">
-          {["about", "skills", "projects", "experience", "contact"].map((item) => (
-            <li key={item}>
-              <button
-                onClick={() => scrollToSection(item)}
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                {item.charAt(0).toUpperCase() + item.slice(1)}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          className="md:hidden bg-[#0A0A0A] shadow-lg"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <ul className="flex flex-col items-center py-4">
-            {["about", "skills", "projects", "experience", "contact"].map((item) => (
-              <li key={item} className="py-2">
+          <ul className="hidden items-center gap-6 md:flex">
+            {menuItems.map((item) => (
+              <li key={item}>
                 <button
                   onClick={() => scrollToSection(item)}
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-sm font-medium text-slate-200 transition hover:text-white hover:underline underline-offset-8"
                 >
                   {item.charAt(0).toUpperCase() + item.slice(1)}
                 </button>
               </li>
             ))}
           </ul>
-        </motion.div>
-      )}
+
+          <div className="hidden items-center gap-3 md:flex">
+            <Link
+              href="/resume"
+              className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-slate-100 transition hover:border-white/30 hover:text-white"
+            >
+              Resume
+            </Link>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-900/40 transition hover:scale-[1.02]"
+            >
+              Let&apos;s talk
+            </button>
+          </div>
+        </nav>
+
+        {isMobileMenuOpen && (
+          <motion.div
+            className="mt-3 flex flex-col gap-2 rounded-xl border border-white/10 bg-slate-900/80 p-3 md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            transition={{ duration: 0.2 }}
+          >
+            {menuItems.map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item)}
+                className="rounded-lg px-3 py-2 text-left text-sm font-medium text-slate-200 transition hover:bg-white/5"
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </button>
+            ))}
+            <Link
+              href="/resume"
+              className="rounded-lg bg-white/5 px-3 py-2 text-center text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              View Resume
+            </Link>
+          </motion.div>
+        )}
+      </div>
     </motion.header>
   )
 }
